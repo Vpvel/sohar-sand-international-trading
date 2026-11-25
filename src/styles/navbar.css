@@ -1,0 +1,160 @@
+/**
+ * Sticky navigation styles for SSI website.
+ * Process: desktop bar layout, Get a Quote CTA, and mobile hamburger drawer.
+ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--nav_height);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: box-shadow var(--transition_fast), border-color var(--transition_fast),
+    background var(--transition_fast);
+}
+
+.navbar_scrolled {
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom-color: var(--color_border);
+  box-shadow: 0 8px 30px rgba(11, 42, 74, 0.08);
+}
+
+.navbar_inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.navbar_logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.navbar_logo img {
+  height: 52px;
+  width: auto;
+}
+
+.navbar_links {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.navbar_links a {
+  position: relative;
+  padding: 0.55rem 0.85rem;
+  color: var(--color_secondary);
+  font-weight: 600;
+  font-size: 0.92rem;
+  border-radius: 999px;
+  transition: color var(--transition_fast), background var(--transition_fast);
+}
+
+.navbar_links a:hover,
+.navbar_links a.active {
+  color: var(--color_primary);
+  background: var(--color_accent);
+}
+
+.navbar_actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.navbar_quote {
+  white-space: nowrap;
+}
+
+/* Keep the drawer quote CTA hidden on desktop layouts */
+.mobile_quote {
+  display: none;
+}
+
+.navbar_toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--color_border);
+  border-radius: 12px;
+  background: var(--color_white);
+  color: var(--color_secondary);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.navbar_overlay {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .navbar_toggle {
+    display: inline-flex;
+  }
+
+  .navbar_actions .navbar_quote {
+    display: none;
+  }
+
+  .navbar_links {
+    position: fixed;
+    top: var(--nav_height);
+    right: 0;
+    width: min(320px, 86vw);
+    height: calc(100vh - var(--nav_height));
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.35rem;
+    padding: 1.25rem;
+    background: var(--color_white);
+    box-shadow: -16px 0 40px rgba(11, 42, 74, 0.12);
+    transform: translateX(110%);
+    transition: transform 0.28s ease;
+    overflow-y: auto;
+  }
+
+  .navbar_links.open {
+    transform: translateX(0);
+  }
+
+  .navbar_links a {
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+  }
+
+  .navbar_links .mobile_quote {
+    display: inline-flex;
+    margin-top: 0.75rem;
+    width: 100%;
+  }
+
+  .navbar_overlay {
+    display: block;
+    position: fixed;
+    inset: var(--nav_height) 0 0 0;
+    background: rgba(7, 31, 54, 0.42);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.28s ease;
+  }
+
+  .navbar_overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar_logo img {
+    height: 42px;
+  }
+}

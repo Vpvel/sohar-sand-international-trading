@@ -1,0 +1,116 @@
+/**
+ * Premium corporate footer styles for SSI.
+ * Process: multi-column layout, registration details, and responsive stacking.
+ */
+
+.footer {
+  background:
+    radial-gradient(circle at bottom left, rgba(28, 90, 171, 0.22), transparent 40%),
+    linear-gradient(160deg, #06182b, #0b2a4a 55%, #123a63);
+  color: rgba(255, 255, 255, 0.88);
+  padding-top: 4rem;
+}
+
+.footer_grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
+  gap: 2.5rem;
+  padding-bottom: 3rem;
+}
+
+.footer_brand img {
+  width: min(100%, 320px);
+  height: auto;
+  margin-bottom: 1.1rem;
+  background: rgba(255, 255, 255, 0.96);
+  padding: 0.75rem 0.9rem;
+  border-radius: 12px;
+}
+
+.footer_brand p {
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 36ch;
+  font-size: 0.95rem;
+}
+
+.footer_title {
+  font-family: var(--font_display);
+  color: var(--color_white);
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.01em;
+}
+
+.footer_links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer_links a {
+  color: rgba(255, 255, 255, 0.76);
+  transition: color var(--transition_fast), padding-left var(--transition_fast);
+  width: fit-content;
+}
+
+.footer_links a:hover {
+  color: var(--color_white);
+  padding-left: 4px;
+}
+
+.footer_contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.footer_contact_item {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.94rem;
+}
+
+.footer_contact_item svg {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  color: #8eb7e8;
+}
+
+.footer_contact_item a {
+  color: rgba(255, 255, 255, 0.78);
+  transition: color var(--transition_fast);
+}
+
+.footer_contact_item a:hover {
+  color: var(--color_white);
+}
+
+.footer_bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 1.25rem 0 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+@media (max-width: 1024px) {
+  .footer_grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer_grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer_bottom {
+    flex-direction: column;
+  }
+}

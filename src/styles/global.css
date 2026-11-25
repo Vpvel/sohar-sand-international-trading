@@ -1,0 +1,369 @@
+/**
+ * Global styles for SOHAR SAND INTERNATIONAL TRADING website.
+ * Process: define brand tokens, base typography, layout helpers, buttons,
+ * animations, and shared utility classes used across all pages.
+ */
+
+:root {
+  /* Brand colours derived from SSI corporate identity */
+  --color_primary: #1c5aab;
+  --color_primary_dark: #154786;
+  --color_secondary: #0b2a4a;
+  --color_navy: #071f36;
+  --color_accent: #e8eef6;
+  --color_accent_soft: #f4f7fb;
+  --color_grey: #6b7c8f;
+  --color_grey_light: #eef2f6;
+  --color_border: #d7e0ea;
+  --color_white: #ffffff;
+  --color_text: #1a2b3c;
+  --color_text_muted: #5a6d80;
+  --color_success: #1f7a4d;
+  --color_error: #b42318;
+
+  /* Typography */
+  --font_display: 'Outfit', sans-serif;
+  --font_body: 'Manrope', sans-serif;
+
+  /* Spacing and layout */
+  --container_max: 1180px;
+  --section_space: 5.5rem;
+  --radius_sm: 8px;
+  --radius_md: 14px;
+  --radius_lg: 22px;
+  --shadow_soft: 0 12px 40px rgba(11, 42, 74, 0.08);
+  --shadow_card: 0 10px 28px rgba(11, 42, 74, 0.07);
+  --nav_height: 82px;
+  --transition_fast: 0.22s ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font_body);
+  color: var(--color_text);
+  background: var(--color_white);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.container {
+  width: min(100% - 2.5rem, var(--container_max));
+  margin-inline: auto;
+}
+
+.page_shell {
+  padding-top: var(--nav_height);
+  min-height: 70vh;
+}
+
+.section {
+  padding: var(--section_space) 0;
+}
+
+.section_muted {
+  background: linear-gradient(180deg, var(--color_accent_soft) 0%, var(--color_white) 100%);
+}
+
+.section_navy {
+  background:
+    radial-gradient(circle at top right, rgba(28, 90, 171, 0.35), transparent 45%),
+    linear-gradient(135deg, var(--color_navy), var(--color_secondary));
+  color: var(--color_white);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font_display);
+  line-height: 1.15;
+  color: var(--color_secondary);
+  letter-spacing: -0.02em;
+}
+
+.section_navy h1,
+.section_navy h2,
+.section_navy h3,
+.section_navy h4,
+.section_navy p {
+  color: var(--color_white);
+}
+
+p {
+  color: var(--color_text_muted);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 48px;
+  padding: 0.8rem 1.45rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: transform var(--transition_fast), background var(--transition_fast),
+    color var(--transition_fast), border-color var(--transition_fast), box-shadow var(--transition_fast);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn_primary {
+  background: var(--color_primary);
+  color: var(--color_white);
+  box-shadow: 0 10px 24px rgba(28, 90, 171, 0.28);
+}
+
+.btn_primary:hover {
+  background: var(--color_primary_dark);
+}
+
+.btn_secondary {
+  background: transparent;
+  color: var(--color_white);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.btn_secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--color_white);
+}
+
+.btn_outline {
+  background: transparent;
+  color: var(--color_primary);
+  border-color: var(--color_primary);
+}
+
+.btn_outline:hover {
+  background: var(--color_primary);
+  color: var(--color_white);
+}
+
+.btn_light {
+  background: var(--color_white);
+  color: var(--color_secondary);
+}
+
+.btn_light:hover {
+  background: var(--color_accent);
+}
+
+.btn_group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.grid_2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.grid_3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.grid_4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.35rem;
+}
+
+.fade_up {
+  animation: fade_up 0.7s ease both;
+}
+
+@keyframes fade_up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide_in {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.page_banner {
+  position: relative;
+  min-height: 320px;
+  display: flex;
+  align-items: flex-end;
+  padding: 4.5rem 0 3.2rem;
+  background:
+    linear-gradient(120deg, rgba(7, 31, 54, 0.88), rgba(28, 90, 171, 0.72)),
+    center / cover no-repeat;
+  color: var(--color_white);
+  overflow: hidden;
+}
+
+.page_banner::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 80px;
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.08));
+  pointer-events: none;
+}
+
+.page_banner .container {
+  position: relative;
+  z-index: 1;
+}
+
+.page_banner h1 {
+  color: var(--color_white);
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  margin-bottom: 0.7rem;
+  max-width: 16ch;
+}
+
+.page_banner p {
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 52ch;
+  font-size: 1.05rem;
+}
+
+.badge_soft {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(28, 90, 171, 0.1);
+  color: var(--color_primary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* Fixed WhatsApp brand button at bottom-right on all pages */
+.floating_whatsapp {
+  position: fixed;
+  right: 1.35rem;
+  bottom: 1.35rem;
+  z-index: 1100;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #25d366;
+  color: #ffffff;
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
+  transition: transform var(--transition_fast), box-shadow var(--transition_fast),
+    background var(--transition_fast);
+  animation: fade_up 0.6s ease 0.35s both;
+}
+
+.floating_whatsapp:hover {
+  transform: translateY(-4px) scale(1.05);
+  background: #1ebe57;
+  box-shadow: 0 16px 32px rgba(37, 211, 102, 0.48);
+}
+
+.floating_whatsapp_icon {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .grid_4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid_3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section_space: 3.8rem;
+    --nav_height: 72px;
+  }
+
+  .container {
+    width: min(100% - 1.5rem, var(--container_max));
+  }
+
+  .grid_2,
+  .grid_3,
+  .grid_4 {
+    grid-template-columns: 1fr;
+  }
+
+  .page_banner {
+    min-height: 280px;
+    padding: 3.5rem 0 2.5rem;
+  }
+
+  .floating_whatsapp {
+    right: 1rem;
+    bottom: 1rem;
+    width: 52px;
+    height: 52px;
+  }
+
+  .floating_whatsapp_icon {
+    width: 28px;
+    height: 28px;
+  }
+}
