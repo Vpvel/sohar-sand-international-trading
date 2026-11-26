@@ -78,8 +78,16 @@ const why_points = [
 ];
 
 function Home() {
-  // Show a short editable product preview on the homepage
-  const preview_products = products.slice(0, 3);
+  // Homepage preview order for Materials and trading solutions (same row)
+  const preview_product_ids = [
+    'sulfur-granules',
+    'urea-granules',
+    'sulfur-lumps',
+    'crude-oil-fob-cif',
+  ];
+  const preview_products = preview_product_ids
+    .map((product_id) => products.find((item) => item.id === product_id))
+    .filter(Boolean);
 
   // Restore homepage SEO title when returning from other routes
   useEffect(() => {
@@ -172,7 +180,7 @@ function Home() {
             title="Materials and trading solutions"
             description="Explore an editable product catalogue that can be updated as SSI confirms its official product range."
           />
-          <div className="product_grid">
+          <div className="product_grid product_grid_home">
             {preview_products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

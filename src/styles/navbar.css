@@ -46,23 +46,96 @@
 .navbar_links {
   display: flex;
   align-items: center;
-  gap: 0.15rem;
+  gap: 0.35rem;
 }
 
-.navbar_links a {
+/* Shared desktop menu item look with animated selection underline */
+.navbar_links > a,
+.nav_dropdown_trigger {
   position: relative;
-  padding: 0.55rem 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.6rem 1rem;
   color: var(--color_secondary);
   font-weight: 600;
   font-size: 0.92rem;
+  border: 0;
   border-radius: 999px;
-  transition: color var(--transition_fast), background var(--transition_fast);
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.28s ease, background 0.28s ease, transform 0.28s ease,
+    box-shadow 0.28s ease;
 }
 
-.navbar_links a:hover,
-.navbar_links a.active {
+.navbar_links > a::before,
+.nav_dropdown_trigger::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0.35rem;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--color_primary);
+  transform: translateX(-50%);
+  transition: width 0.28s ease;
+}
+
+.navbar_links > a::after,
+.nav_dropdown_trigger::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(28, 90, 171, 0.1);
+  opacity: 0;
+  transform: scale(0.86);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  z-index: -1;
+}
+
+.navbar_links > a:hover,
+.nav_dropdown_trigger:hover {
   color: var(--color_primary);
-  background: var(--color_accent);
+  transform: translateY(-1px);
+}
+
+.navbar_links > a:hover::before,
+.nav_dropdown_trigger:hover::before {
+  width: 1.15rem;
+}
+
+.navbar_links > a:hover::after,
+.nav_dropdown_trigger:hover::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Selected menu item animation */
+.navbar_links > a.active,
+.nav_dropdown_trigger.active,
+.nav_dropdown.open .nav_dropdown_trigger {
+  color: var(--color_primary);
+  background: transparent;
+  box-shadow: none;
+  animation: nav_select_pulse 0.45s ease;
+}
+
+.navbar_links > a.active::before,
+.nav_dropdown_trigger.active::before,
+.nav_dropdown.open .nav_dropdown_trigger::before {
+  width: 1.55rem;
+}
+
+.navbar_links > a.active::after,
+.nav_dropdown_trigger.active::after,
+.nav_dropdown.open .nav_dropdown_trigger::after {
+  opacity: 1;
+  transform: scale(1);
+  background: rgba(28, 90, 171, 0.14);
 }
 
 /* Products dropdown wrapper for hover and click menus */
@@ -72,36 +145,25 @@
   align-items: center;
 }
 
-/* Products trigger matches sibling nav link styles */
-.nav_dropdown_trigger {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.55rem 0.85rem;
-  color: var(--color_secondary);
-  font-weight: 600;
-  font-size: 0.92rem;
-  border: 0;
-  border-radius: 999px;
-  background: transparent;
-  cursor: pointer;
-  transition: color var(--transition_fast), background var(--transition_fast);
-}
-
-.nav_dropdown_trigger:hover,
-.nav_dropdown_trigger.active,
-.nav_dropdown.open .nav_dropdown_trigger {
-  color: var(--color_primary);
-  background: var(--color_accent);
-}
-
 /* Chevron rotates when the Products menu is open */
 .nav_dropdown_chevron {
-  transition: transform var(--transition_fast);
+  transition: transform 0.28s ease;
 }
 
 .nav_dropdown.open .nav_dropdown_chevron {
   transform: rotate(180deg);
+}
+
+@keyframes nav_select_pulse {
+  0% {
+    transform: scale(0.96);
+  }
+  60% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Dark navy petroleum products dropdown matching the reference menu */
@@ -244,9 +306,38 @@
     transform: translateX(0);
   }
 
-  .navbar_links a {
+  .navbar_links > a,
+  .nav_dropdown_trigger {
+    width: 100%;
+    justify-content: flex-start;
     padding: 0.9rem 1rem;
     border-radius: 12px;
+    transform: none;
+  }
+
+  .navbar_links > a::before,
+  .nav_dropdown_trigger::before {
+    left: 0.85rem;
+    bottom: 0.7rem;
+    top: 0.7rem;
+    width: 0;
+    height: auto;
+    transform: none;
+  }
+
+  .navbar_links > a.active::before,
+  .nav_dropdown_trigger.active::before,
+  .nav_dropdown.open .nav_dropdown_trigger::before,
+  .navbar_links > a:hover::before,
+  .nav_dropdown_trigger:hover::before {
+    width: 3px;
+  }
+
+  .navbar_links > a.active,
+  .nav_dropdown_trigger.active,
+  .nav_dropdown.open .nav_dropdown_trigger {
+    background: var(--color_accent);
+    animation: none;
   }
 
   /* Stack Products dropdown inside the mobile drawer */
@@ -258,8 +349,6 @@
   .nav_dropdown_trigger {
     width: 100%;
     justify-content: space-between;
-    padding: 0.9rem 1rem;
-    border-radius: 12px;
   }
 
   .nav_dropdown_menu {
