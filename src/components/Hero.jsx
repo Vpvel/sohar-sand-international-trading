@@ -8,25 +8,37 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import banner_one from '../assets/banner_image/banner_images_1.jpg';
 import banner_two from '../assets/banner_image/banner_images_2.jpg';
+import banner_three from '../assets/banner_image/banner_images_3.jpg';
 import '../styles/home.css';
 
-/** Homepage banner slides used by the auto slider */
+/**
+ * Homepage banner slides matched to banner_image folder count (3 images).
+ * Each slide title and subtitle follows the visual focus of its banner.
+ */
 const banner_slides = [
   {
     id: 'banner_one',
     image: banner_one,
     eyebrow: 'SOHAR SAND INTERNATIONAL TRADING',
-    title: 'Your Trusted Partner in International Trading',
+    title: 'Your Trusted Partner in Petroleum Trading',
     subtitle:
-      'SOHAR SAND INTERNATIONAL TRADING is committed to building reliable business relationships through professional trading and customer-focused solutions.',
+      'SSI delivers reliable international trading across petroleum products, energy commodities, and customer-focused supply solutions.',
   },
   {
     id: 'banner_two',
     image: banner_two,
-    eyebrow: 'QUALITY · RELIABILITY · PARTNERSHIP',
-    title: 'Professional Trading Built on Trust and Quality',
+    eyebrow: 'BITUMEN SUPPLY',
+    title: 'Bitumen 60/70',
     subtitle:
-      'Connect with SSI for dependable coordination, customer-focused service, and long-term business relationships across trading opportunities.',
+      'High-quality bitumen for road construction, waterproofing, and industrial applications, traded with dependable supply coordination.',
+  },
+  {
+    id: 'banner_three',
+    image: banner_three,
+    eyebrow: 'CHEMICAL PRODUCTS',
+    title: 'Sulfur & Urea Granules',
+    subtitle:
+      'Sulfur granules, sulfur lumps, and urea granules supplied for agricultural, industrial, and chemical trading requirements.',
   },
 ];
 
