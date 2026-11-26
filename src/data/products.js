@@ -1,123 +1,224 @@
 /**
  * Centralized product catalogue for SOHAR SAND INTERNATIONAL TRADING.
  * Process: edit this file to add, update, or remove products and categories.
- * Notes: names and specifications remain editable until the company confirms
- * its final product catalogue. Replace images and specs as needed.
+ * Notes: product names follow the official petroleum trading menu.
+ * Images are loaded from src/assets/Products and matched to each product title.
  */
-import product_sand from '../assets/images/product-sand.jpg';
-import product_aggregate from '../assets/images/product-aggregate.jpg';
-import product_materials from '../assets/images/product-materials.jpg';
-import product_logistics from '../assets/images/product-logistics.jpg';
+import product_crude_oil from '../assets/Products/Crude-oil.jpg';
+import product_bitumen from '../assets/Products/Bitumen.png';
+import product_gas_oil from '../assets/Products/gas-oil-diesel.jpg';
+import product_fuel_oil from '../assets/Products/fueloil.png';
+import product_lpg from '../assets/Products/lpg.jpeg';
+import product_lng from '../assets/Products/lng.png';
+import product_cng from '../assets/Products/cng.png';
+import product_jet_fuel from '../assets/Products/getfuel.png';
+import product_sulfur_granules from '../assets/Products/sulfur_granules.png';
+import product_sulfur_lumps from '../assets/Products/sulfur_lumps.png';
+import product_urea_granules from '../assets/Products/urea_granules.png';
 
 /** Editable product categories used for filtering on the Products page. */
 export const product_categories = [
   { id: 'all', label: 'All Products' },
-  { id: 'sand', label: 'Sand Materials' },
-  { id: 'aggregates', label: 'Aggregates' },
-  { id: 'construction', label: 'Construction Materials' },
-  { id: 'trading', label: 'Trading Solutions' },
+  { id: 'petroleum', label: 'Petroleum Products' },
+  { id: 'chemicals', label: 'Chemical Products' },
 ];
 
 /**
- * Editable product list.
+ * Editable product list aligned with the petroleum trading catalogue.
  * Update name, description, specifications, category, and image per item.
  */
 export const products = [
   {
-    id: 'construction-sand',
-    name: 'Construction Sand',
-    category: 'sand',
+    id: 'crude-oil-fob-cif',
+    name: 'Crude Oil FOB / CIF',
+    category: 'petroleum',
     short_description:
-      'Quality construction sand suitable for building and civil works, supplied through professional trading coordination.',
+      'Crude oil supply offered on FOB and CIF trading terms for international buyers.',
     description:
-      'Construction sand traded to support building and infrastructure requirements. Product grades and supply volumes can be aligned with buyer specifications upon enquiry.',
+      'Crude oil traded under FOB and CIF arrangements to support international petroleum demand. Volumes, grades, and delivery windows are confirmed with each enquiry.',
     specifications: [
-      'Category: Sand Materials',
-      'Application: Construction and civil works',
+      'Category: Petroleum Products',
+      'Incoterms: FOB / CIF',
       'Supply: Subject to enquiry and availability',
-      'Packaging / delivery: Coordinated as per agreement',
+      'Coordination: International trading support',
     ],
-    image: product_sand,
+    image: product_crude_oil,
   },
   {
-    id: 'fine-sand',
-    name: 'Fine Sand',
-    category: 'sand',
+    id: 'bitumen',
+    name: 'Bitumen',
+    category: 'petroleum',
     short_description:
-      'Fine sand for finishing and specialised construction applications, available through enquiry-based supply.',
+      'Bitumen products for road construction, waterproofing, and industrial applications.',
     description:
-      'Fine sand offered as part of SSI trading activities. Exact grading and volumes are confirmed with each customer based on project needs.',
+      'Bitumen traded for construction and industrial use. Product grades and shipment quantities are aligned with buyer specifications during the enquiry process.',
     specifications: [
-      'Category: Sand Materials',
-      'Application: Finishing and specialised works',
+      'Category: Petroleum Products',
+      'Application: Roads, waterproofing, industry',
       'Supply: Enquiry-based',
-      'Quality focus: Customer specification alignment',
+      'Delivery: Coordinated as per agreement',
     ],
-    image: product_sand,
+    image: product_bitumen,
   },
   {
-    id: 'crushed-aggregates',
-    name: 'Crushed Aggregates',
-    category: 'aggregates',
+    id: 'gas-oil',
+    name: 'Gas Oil',
+    category: 'petroleum',
     short_description:
-      'Crushed aggregate materials for concrete, road works, and structural applications.',
+      'Gas oil trading support for commercial and industrial fuel requirements.',
     description:
-      'Crushed aggregates traded to support construction projects. Size ranges and quantities are confirmed during the enquiry process.',
+      'Gas oil supplied through professional petroleum trading coordination. Specifications and volumes are confirmed based on customer requirements.',
     specifications: [
-      'Category: Aggregates',
-      'Application: Concrete, roads, and structures',
-      'Sizes: Confirmed per enquiry',
-      'Supply coordination: Available on request',
+      'Category: Petroleum Products',
+      'Application: Commercial and industrial fuel',
+      'Supply: Subject to availability',
+      'Quality focus: Specification alignment',
     ],
-    image: product_aggregate,
+    image: product_gas_oil,
   },
   {
-    id: 'building-materials',
-    name: 'Building Materials',
-    category: 'construction',
+    id: 'fuel-oil',
+    name: 'Fuel Oil',
+    category: 'petroleum',
     short_description:
-      'Selected building materials coordinated through SSI trading support for project requirements.',
+      'Fuel oil available for industrial and marine trading requirements.',
     description:
-      'Building materials trading support for customers seeking reliable sourcing coordination. Specific items and brands are confirmed with each enquiry.',
+      'Fuel oil traded to support industrial and marine demand. Grades, quantities, and delivery terms are confirmed with each buyer enquiry.',
     specifications: [
-      'Category: Construction Materials',
-      'Scope: Enquiry-based material coordination',
-      'Focus: Quality and reliability',
-      'Delivery: Arranged as agreed',
+      'Category: Petroleum Products',
+      'Application: Industrial and marine use',
+      'Supply: Enquiry-based',
+      'Trading support: End-to-end coordination',
     ],
-    image: product_materials,
+    image: product_fuel_oil,
   },
   {
-    id: 'bulk-supply',
-    name: 'Bulk Material Supply',
-    category: 'trading',
+    id: 'en590-10ppm',
+    name: 'EN590 10PPM CIF / FOB / STS',
+    category: 'petroleum',
     short_description:
-      'Bulk trading and supply coordination for sand and related construction materials.',
+      'EN590 10PPM diesel traded on CIF, FOB, and STS terms for compliant fuel supply.',
     description:
-      'Bulk material supply solutions designed for businesses that require dependable trading coordination and clear communication throughout the order cycle.',
+      'EN590 10PPM diesel offered under CIF, FOB, and STS trading options. Product compliance and shipment details are confirmed during enquiry and contracting.',
     specifications: [
-      'Category: Trading Solutions',
-      'Model: Bulk / project-based supply',
-      'Coordination: End-to-end trading support',
-      'Relationship focus: Long-term business partnerships',
+      'Category: Petroleum Products',
+      'Specification: EN590 10PPM',
+      'Incoterms: CIF / FOB / STS',
+      'Supply: Subject to enquiry and availability',
     ],
-    image: product_logistics,
+    image: product_gas_oil,
   },
   {
-    id: 'custom-trading',
-    name: 'Custom Trading Requirements',
-    category: 'trading',
+    id: 'lpg',
+    name: 'LPG',
+    category: 'petroleum',
     short_description:
-      'Tailored trading support for customers with specific material or supply requirements.',
+      'Liquefied Petroleum Gas (LPG) trading for commercial and industrial buyers.',
     description:
-      'Custom trading arrangements for buyers with specialised requirements. SSI works with customers to understand needs and coordinate suitable supply options.',
+      'LPG traded to support commercial and industrial energy needs. Supply volumes and delivery arrangements are coordinated based on buyer requirements.',
     specifications: [
-      'Category: Trading Solutions',
-      'Approach: Requirement-led',
-      'Communication: Professional and responsive',
-      'Outcome: Reliable business coordination',
+      'Category: Petroleum Products',
+      'Product: Liquefied Petroleum Gas',
+      'Supply: Enquiry-based',
+      'Coordination: Professional trading support',
     ],
-    image: product_logistics,
+    image: product_lpg,
+  },
+  {
+    id: 'lng',
+    name: 'LNG',
+    category: 'petroleum',
+    short_description:
+      'Liquefied Natural Gas (LNG) trading solutions for energy and industrial demand.',
+    description:
+      'LNG offered through SSI petroleum trading coordination. Contract terms, volumes, and delivery windows are confirmed with each customer enquiry.',
+    specifications: [
+      'Category: Petroleum Products',
+      'Product: Liquefied Natural Gas',
+      'Supply: Subject to availability',
+      'Model: Enquiry-led trading',
+    ],
+    image: product_lng,
+  },
+  {
+    id: 'cng',
+    name: 'CNG',
+    category: 'petroleum',
+    short_description:
+      'Compressed Natural Gas (CNG) trading support for cleaner fuel applications.',
+    description:
+      'CNG traded to support cleaner fuel requirements. Supply planning and commercial terms are aligned with buyer specifications upon enquiry.',
+    specifications: [
+      'Category: Petroleum Products',
+      'Product: Compressed Natural Gas',
+      'Application: Cleaner fuel solutions',
+      'Supply: Enquiry-based',
+    ],
+    image: product_cng,
+  },
+  {
+    id: 'jet-fuel',
+    name: 'Jet Fuel',
+    category: 'petroleum',
+    short_description:
+      'Jet fuel trading for aviation and related commercial fuel requirements.',
+    description:
+      'Jet fuel supplied through professional petroleum trading coordination. Grades, volumes, and delivery terms are confirmed during the enquiry process.',
+    specifications: [
+      'Category: Petroleum Products',
+      'Application: Aviation fuel supply',
+      'Supply: Subject to enquiry and availability',
+      'Coordination: International trading support',
+    ],
+    image: product_jet_fuel,
+  },
+  {
+    id: 'sulfur-granules',
+    name: 'Sulfur Granules',
+    category: 'chemicals',
+    short_description:
+      'Sulfur granules traded for agricultural, industrial, and chemical processing needs.',
+    description:
+      'Sulfur granules supplied through professional trading coordination for fertilizer and industrial applications. Grades, packing, and shipment volumes are confirmed with each enquiry.',
+    specifications: [
+      'Category: Chemical Products',
+      'Form: Granules',
+      'Application: Agriculture and industry',
+      'Supply: Subject to enquiry and availability',
+    ],
+    image: product_sulfur_granules,
+  },
+  {
+    id: 'sulfur-lumps',
+    name: 'Sulfur Lumps',
+    category: 'chemicals',
+    short_description:
+      'Sulfur lumps traded for industrial, chemical, and agricultural processing needs.',
+    description:
+      'Sulfur lumps supplied through professional trading coordination for industrial and agricultural applications. Grades, packing, and shipment volumes are confirmed with each enquiry.',
+    specifications: [
+      'Category: Chemical Products',
+      'Form: Lumps',
+      'Application: Industry, chemicals, and agriculture',
+      'Supply: Subject to enquiry and availability',
+    ],
+    image: product_sulfur_lumps,
+  },
+  {
+    id: 'urea-granules',
+    name: 'Urea Granules',
+    category: 'chemicals',
+    short_description:
+      'Urea granules traded for fertilizer and industrial nitrogen applications.',
+    description:
+      'Urea granules offered for agricultural fertilizer and industrial use. Product specifications, packing options, and delivery terms are aligned with buyer requirements upon enquiry.',
+    specifications: [
+      'Category: Chemical Products',
+      'Form: Granules',
+      'Application: Fertilizer and industrial nitrogen',
+      'Supply: Enquiry-based',
+    ],
+    image: product_urea_granules,
   },
 ];
 

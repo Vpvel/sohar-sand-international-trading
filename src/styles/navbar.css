@@ -1,6 +1,7 @@
 /**
  * Sticky navigation styles for SSI website.
- * Process: desktop bar layout, Get a Quote CTA, and mobile hamburger drawer.
+ * Process: desktop bar layout, Products petroleum dropdown menu,
+ * and mobile hamburger drawer with nested product links.
  */
 
 .navbar {
@@ -62,6 +63,123 @@
 .navbar_links a.active {
   color: var(--color_primary);
   background: var(--color_accent);
+}
+
+/* Products dropdown wrapper for hover and click menus */
+.nav_dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Products trigger matches sibling nav link styles */
+.nav_dropdown_trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.55rem 0.85rem;
+  color: var(--color_secondary);
+  font-weight: 600;
+  font-size: 0.92rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  transition: color var(--transition_fast), background var(--transition_fast);
+}
+
+.nav_dropdown_trigger:hover,
+.nav_dropdown_trigger.active,
+.nav_dropdown.open .nav_dropdown_trigger {
+  color: var(--color_primary);
+  background: var(--color_accent);
+}
+
+/* Chevron rotates when the Products menu is open */
+.nav_dropdown_chevron {
+  transition: transform var(--transition_fast);
+}
+
+.nav_dropdown.open .nav_dropdown_chevron {
+  transform: rotate(180deg);
+}
+
+/* Dark navy petroleum products dropdown matching the reference menu */
+.nav_dropdown_menu {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  left: 0;
+  min-width: 280px;
+  max-height: min(70vh, 420px);
+  overflow-y: auto;
+  padding: 0.55rem 0;
+  background: var(--color_navy);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(7, 31, 54, 0.28);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity var(--transition_fast), transform var(--transition_fast),
+    visibility var(--transition_fast);
+  z-index: 1100;
+}
+
+.nav_dropdown.open .nav_dropdown_menu,
+.nav_dropdown:hover .nav_dropdown_menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Category label at the top of the Products menu */
+.nav_dropdown_heading {
+  padding: 0.7rem 1.1rem 0.55rem;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Product links: higher specificity so navbar link colors do not override */
+.navbar_links .nav_dropdown_item {
+  display: block;
+  padding: 0.72rem 1.1rem;
+  margin: 0 0.35rem;
+  border-radius: 8px;
+  color: #ffffff;
+  background: transparent;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: background var(--transition_fast), color var(--transition_fast);
+}
+
+.navbar_links .nav_dropdown_item:hover,
+.navbar_links .nav_dropdown_item:focus,
+.navbar_links .nav_dropdown_item.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+/* Final shortcut back to the full Products page */
+.navbar_links .nav_dropdown_all {
+  margin-top: 0.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+  color: #9ec1ea;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+
+.navbar_links .nav_dropdown_all:hover,
+.navbar_links .nav_dropdown_all:focus,
+.navbar_links .nav_dropdown_all.active {
+  background: rgba(255, 255, 255, 0.08);
+  color: #cfe0f5;
 }
 
 .navbar_actions {
@@ -129,6 +247,35 @@
   .navbar_links a {
     padding: 0.9rem 1rem;
     border-radius: 12px;
+  }
+
+  /* Stack Products dropdown inside the mobile drawer */
+  .nav_dropdown {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav_dropdown_trigger {
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+  }
+
+  .nav_dropdown_menu {
+    position: static;
+    min-width: 0;
+    max-height: none;
+    margin-top: 0.35rem;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    display: none;
+    border-radius: 12px;
+  }
+
+  .nav_dropdown.open .nav_dropdown_menu {
+    display: block;
   }
 
   .navbar_links .mobile_quote {
