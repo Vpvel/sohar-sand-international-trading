@@ -9,10 +9,13 @@ import { ArrowRight } from 'lucide-react';
 import banner_one from '../assets/banner_image/banner_images_1.jpg';
 import banner_two from '../assets/banner_image/banner_images_2.jpg';
 import banner_three from '../assets/banner_image/banner_images_3.jpg';
+import banner_four from '../assets/banner_image/banner_images_4.png';
+import banner_five from '../assets/banner_image/banner_images_5.png';
+import banner_six from '../assets/banner_image/banner_images_6.png';
 import '../styles/home.css';
 
 /**
- * Homepage banner slides matched to banner_image folder count (3 images).
+ * Homepage banner slides matched to banner_image folder count (6 images).
  * Each slide title and subtitle follows the visual focus of its banner.
  */
 const banner_slides = [
@@ -39,6 +42,30 @@ const banner_slides = [
     title: 'Sulfur & Urea Granules',
     subtitle:
       'Sulfur granules, sulfur lumps, and urea granules supplied for agricultural, industrial, and chemical trading requirements.',
+  },
+  {
+    id: 'banner_four',
+    image: banner_four,
+    eyebrow: 'SULFUR LUMPS',
+    title: 'Sulfur Lumps',
+    subtitle:
+      'Quality sulfur lumps traded for industrial, chemical, and agricultural processing needs with reliable supply coordination.',
+  },
+  {
+    id: 'banner_five',
+    image: banner_five,
+    eyebrow: 'SULFUR GRANULES',
+    title: 'Sulfur Granules',
+    subtitle:
+      'Sulfur granules supplied for fertilizer and industrial applications through professional international trading support.',
+  },
+  {
+    id: 'banner_six',
+    image: banner_six,
+    eyebrow: 'UREA GRANULES',
+    title: 'Urea Granules',
+    subtitle:
+      'Urea granules traded for agricultural fertilizer and industrial nitrogen requirements with enquiry-based supply.',
   },
 ];
 
